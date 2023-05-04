@@ -110,13 +110,7 @@ export default function List() {
     setTextItem("");
   };
 
-  const onHandleModal = (item) => {
-    setItemSelected(item);
-    setModalVisible(true);
-  };
-
   const onHandleDelete = (item) => {
-    console.log(item);
     setList((prevState) =>
       prevState.filter((element) => element.name !== item.name)
     );
@@ -167,7 +161,7 @@ export default function List() {
                       <FlatList
                         data={list}
                         renderItem={renderItem}
-                        keyExtractor={(item) => item}
+                        keyExtractor={item => item.id}
                         horizontal={false}
                       />
                     </View>
