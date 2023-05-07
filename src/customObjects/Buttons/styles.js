@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         elevation: 3,
         width: '80%',
+        alignItems: "center"
     },
 
     buttonStart: {
@@ -33,8 +34,8 @@ const styles = StyleSheet.create({
         backgroundColor: "#191919"
     },
 
-    textAddItem: {
-
+    buttonText: {
+        
     },
 
     buttonModal: {

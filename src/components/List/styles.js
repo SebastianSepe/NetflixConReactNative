@@ -1,38 +1,32 @@
 import { StyleSheet } from "react-native";
+import colors from "../../constantes/colors";
 
 const styles = StyleSheet.create({
   listImageContenier: {
     width: 120,
     height: 174,
     borderRadius: 15,
-    shadowColor: "#ff0000",
-    shadowRadius: 30,
   },
 
-  listImageContenier2: {
-    width: 120,
-    height: 174,
-    borderRadius: 15,
-    shadowColor: "#ff0000",
-    shadowRadius: 30,
-  },
   listContainer: {
     flex: 1,
     justifyContent: "flex-end",
-    backgroundColor: "#000",
+    backgroundColor: colors.backgroundPrimary,
   },
 
   text: {
     flex: 1,
-    color: "white",
+    color: colors.textPrimary,
     padding: 8,
     fontSize: 20,
     fontWeight: "bold",
   },
+
   addElementMyList: {
     flexDirection: "row",
     alignItems: "center",
   },
+
 // MODAL
 
   modal: {
@@ -44,13 +38,13 @@ const styles = StyleSheet.create({
   containerModal: {
     width: "80%",
     height: "50%",
-    backgroundColor: "#191919",
+    backgroundColor: colors.backgroundSecondary,
     borderRadius: 25,
     padding: 18,
     margin: 10,
   },
   textModal: {
-    color: "white",
+    color: colors.textPrimary,
     alignContent: "center",
     justifyContent: "center",
     fontSize: 20,
@@ -69,7 +63,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-evenly",
     marginBottom: 10,
-    backgroundColor: "white",
+    backgroundColor: colors.backgroundTerciary,
     borderRadius: 20,
     padding: 2,
     borderRadius: 15
@@ -97,7 +91,7 @@ const styles = StyleSheet.create({
     marginBottom: 3,
     borderRadius: 15,
     alignItems: "center",
-    backgroundColor: "white"
+    backgroundColor: colors.backgroundTerciary,
   },
 
   textAddItem: {

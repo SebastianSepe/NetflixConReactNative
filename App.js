@@ -1,49 +1,47 @@
-import React, { Component } from "react";
+import * as React from "react";
+import { useState } from "react";
 import { SafeAreaView, StatusBar, StyleSheet, View } from "react-native";
 
 import Header from "./src/components/Header";
 import List from "./src/components/List";
 import Menu from "./src/components/Menu";
 import SideMenu from "react-native-side-menu";
+import SelectionScreen from "./src/screens/SelectionScreen";
+
+
+
+import HomeScreen from "./src/screens/HomeScreen";
+import colors from "./src/constantes/colors";
 import Slider from "./src/components/Slider";
-import Lista from "./src/components/AddItem";
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpen: false,
-    };
-  }
+export default function App() {
+  const [isUser, setIsUser] = useState(false);
 
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen,
-    });
-  }
+  const handleLogIn = () => {
+    setIsUser(true);
+  };
 
-  updateMenu(isOpen) {
-    this.setState({ isOpen });
-  }
+    const [isOpen, setIsOpen] = useState(false);
 
-  render() {
-    return (
-      <SafeAreaView style={{flex:1, backgroundColor:"black"}} >
-        <StatusBar barStyle={"light-content"} />
-        <View style={{flex: 1}}>
-          <SideMenu
-            menu={<Menu />}
-            isOpen={this.state.isOpen}
-            onChange={(isOpen) => this.updateMenu(isOpen)}
-          >
-            <Header toggle={this.toggle.bind(this)} />
-            <Slider />
-            <List />
-          </SideMenu>
-        </View>
-      </SafeAreaView>
-    );
-  }
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const updateMenu = (newIsOpen) => {
+    setIsOpen(newIsOpen);
+  };
+
+
+  return (
+    <SafeAreaView style={{ flex: 1, backgroundColor: "black" }}>
+      <StatusBar barStyle={"light-content"} />
+      {isUser ? (
+          <SelectionScreen />
+      ) : (
+        <HomeScreen onUserLogin={handleLogIn} />
+      )}
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -52,24 +50,6 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   container: {
-    backgroundColor: "black",
+    backgroundColor: colors.backgroundPrimary,
   },
 });
-
-//         />
-
-{
-  /* <NavigationContainer>
-  <Stack.Navigator>
-    <Stack.Screen
-      name="Home"
-      component={HomeScreen}
-      options={{ title: "Homeee" }}
-    ></Stack.Screen>
-    <Stack.Screen
-      name="MovieAndSeries"
-      component={MoviesAndSeriesScreen}
-    ></Stack.Screen>
-  </Stack.Navigator>
-</NavigationContainer>; */
-}

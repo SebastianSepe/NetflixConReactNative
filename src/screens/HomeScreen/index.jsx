@@ -10,24 +10,26 @@ import {
   View,
 } from "react-native";
 
-import MoviesAndSeriesScreen from "../screens/MoviesAndSeriesScreen";
+import SelectionScreen from "../SelectionScreen";
 import { NavigationContainer } from "@react-navigation/native";
-import { SignIn } from "../customObjects/Buttons";
+import { SignIn } from "../../customObjects/Buttons";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+
 
 const Stack = createNativeStackNavigator();
 
-function HomeScreen() {
+function HomeScreen({onUserLogin}) {
   return (
     <View style={styles.home}>
       <View style={styles.homeContainer}>
         <ImageBackground
-          source={require("../assets/imgs/background.jpg")}
+          source={require("../../assets/imgs/background.jpg")}
           resizeMode="cover"
           style={styles.homeImageBackground}
         >
           <View style={styles.homeTitleAndPlaceholder}>
-            <Text style={styles.homeTitle}>NETFLIX</Text>
+          <Image style={styles.logo} source={require("../../assets/imgs/logo.png")} />
             <TextInput
               placeholder="Email"
               placeholderTextColor={"#f1f1f1"}
@@ -41,7 +43,7 @@ function HomeScreen() {
           </View>
 
           <View style={styles.homeButtonLogin}>
-            <SignIn /*>onPress={() => navigation.navigate("MovieAndSeries",)} text="SIGN IN"*/ />
+            <SignIn onPress={() => onUserLogin()} text="SIGN IN" />
             <View style={styles.homeSignup}>
               <Text style={styles.homeSignUpQuestion}>
                 Don't have an account?
@@ -87,6 +89,11 @@ const styles = StyleSheet.create({
     color: "#ff0000",
     textAlign: "center",
     justifyContent: "center",
+  },
+
+  logo: {
+    width: 380,
+    height: 150,
   },
 
   homeLoginInput: {

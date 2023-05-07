@@ -1,18 +1,38 @@
-import { StyleSheet, Dimensions } from "react-native"
+import { StyleSheet, Dimensions } from "react-native";
 
-const {width} = Dimensions.get('window')
+const { width, height} = Dimensions.get("window");
+
+
+
 const styles = StyleSheet.create({
-    container: {
+  swiperContainer: {
+    flext:1,
+    height: 180,
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  image: {
+    width: width,
+    height: height,
+    resizeMode: 'cover',
+  },
+});
 
-        justifyContent: "center",
-    },
-    image: {
-        width
-    }, 
-    test: {
-        flex: 1,
-    }  
-     
-})
 
 export default styles;
+
+
+// const styles = StyleSheet.create({
+//   container: {
+//     justifyContent: "center",
+//   },
+//   image: {
+//     width,
+//   },
+//   swiperContainer: {
+//     flex: 1,
+//   },
+// });

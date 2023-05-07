@@ -11,10 +11,11 @@ import {
 import * as React from "react";
 import { useState } from "react";
 import styles from "./styles";
-import MyList from "../MyList";
 import { CancelButton, AddButton, AddItem } from "../../customObjects/Buttons";
+import MovieList from "../FlatiListFilm";
 
 export default function List() {
+  
   const firstLineMovies = [
     {
       key: 1,
@@ -89,7 +90,6 @@ export default function List() {
     },
   ];
 
-  //MODAL
   const [textItem, setTextItem] = useState("");
   const [list, setList] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
@@ -123,7 +123,6 @@ export default function List() {
     </View>
   );
 
-  ///
   return (
     <View style={styles.listContainer}>
       <ScrollView>
@@ -140,7 +139,6 @@ export default function List() {
             >
               <View style={styles.modal}>
                 <View style={styles.containerModal}>
-
                   <View style={styles.headerModal}>
                     <Text style={styles.textModal}>My List</Text>
                     <CancelButton text="X" onPress={toggleModal} />
@@ -161,7 +159,7 @@ export default function List() {
                       <FlatList
                         data={list}
                         renderItem={renderItem}
-                        keyExtractor={item => item.id}
+                        keyExtractor={(item) => item.id}
                         horizontal={false}
                       />
                     </View>
@@ -169,9 +167,8 @@ export default function List() {
                 </View>
               </View>
             </Modal>
+            
           </View>
-
-          {/* View de peliculas Horizontales */}
           <FlatList
             horizontal
             ItemSeparatorComponent={() => <View style={{ width: 10 }} />}
@@ -185,18 +182,11 @@ export default function List() {
           />
         </View>
         <View>
-          <Text style={styles.text}>My Recomended List</Text>
-          <FlatList
-            horizontal
-            ItemSeparatorComponent={() => <View style={{ width: 10 }} />}
-            renderItem={({ item }) => (
-              <Image
-                style={styles.listImageContenier}
-                source={{ uri: item.image }}
-              />
-            )}
-            data={secondLineMovies}
-          />
+        <MovieList title="My Recommended List" data={secondLineMovies} />
+        <MovieList title="Series" data={firstLineMovies} />
+        <MovieList title="Films" data={secondLineMovies} />
+        <MovieList title="Action" data={firstLineMovies} />
+          <MovieList title="Comedy" data={secondLineMovies} />
         </View>
       </ScrollView>
     </View>
