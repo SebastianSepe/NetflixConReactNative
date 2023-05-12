@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     height: 60,
+    width: "100%",
     alignItems: "center",
     justifyContent: "space-between",
     backgroundColor: colors.backgroundPrimary,

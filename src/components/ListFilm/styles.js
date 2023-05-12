@@ -15,6 +15,15 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
   },
+  modalContent: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  modalImage: {
+    width: '100%',
+    height: '100%',
+  },
 
 });
 

@@ -1,20 +1,15 @@
-import * as React from "react";
 import { useState } from "react";
 import { SafeAreaView, StatusBar, StyleSheet, View } from "react-native";
-
-import Header from "./src/components/Header";
-import List from "./src/components/List";
-import Menu from "./src/components/Menu";
-import SideMenu from "react-native-side-menu";
-import SelectionScreen from "./src/screens/SelectionScreen";
-
-
-
+import CategorysViewScreen from "./src/screens/CategorysViewScreen";
 import HomeScreen from "./src/screens/HomeScreen";
 import colors from "./src/constantes/colors";
-import Slider from "./src/components/Slider";
+
+import FilmsNavigator from "./src/navigation";
+
 
 export default function App() {
+
+
   const [isUser, setIsUser] = useState(false);
 
   const handleLogIn = () => {
@@ -23,9 +18,7 @@ export default function App() {
 
     const [isOpen, setIsOpen] = useState(false);
 
-  const toggle = () => {
-    setIsOpen(!isOpen);
-  };
+
 
   const updateMenu = (newIsOpen) => {
     setIsOpen(newIsOpen);
@@ -35,8 +28,11 @@ export default function App() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "black" }}>
       <StatusBar barStyle={"light-content"} />
+      {/* <View style={{backgroundColor: "white", flex: 1,}}>
+      <DataApi />
+      </View> */}
       {isUser ? (
-          <SelectionScreen />
+          <FilmsNavigator />
       ) : (
         <HomeScreen onUserLogin={handleLogIn} />
       )}

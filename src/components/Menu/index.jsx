@@ -6,7 +6,7 @@ import {
   Text,
   View,
   FlatList,
-  renderItem
+  renderItem,
 } from "react-native";
 import React, { Component } from "react";
 
@@ -14,73 +14,19 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import IonIcons from "react-native-vector-icons/Ionicons";
 import styles from "./styles";
 
-const menuItems = [
-  {
-  id: "1",
-  icon: "download",
-  text: "My Downloads",
-  },
-  {
-  id: "2",
-  icon: "md-checkmark",
-  text: "My List",
-  },
-  {
-  id: "3",
-  icon: "",
-  text: "Home",
-  },
-  {
-  id: "4",
-  icon: "",
-  text: "Available for Downloads",
-  },
-  {
-  id: "5",
-  icon: "",
-  text: "Netflix Originals",
-  },
-  {
-  id: "6",
-  icon: "",
-  text: "Tv Show",
-  },
-  {
-  id: "7",
-  icon: "",
-  text: "Action & Adventure",
-  },
-  {
-  id: "8",
-  icon: "",
-  text: "Children & Family Movies",
-  },
-  {
-  id: "9",
-  icon: "",
-  text: "Comedy",
-  },
-  {
-  id: "10",
-  icon: "",
-  text: "Documentaries",
-  },
-  {
-  id: "11",
-  icon: "",
-  text: "Dramas",
-  },
-  {
-  id: "12",
-  icon: "",
-  text: "Independent Movies",
-  },
-  {
-  id: "13",
-  icon: "",
-  text: "Indian Movies",
-  },
-  ];
+
+const genres = [
+  { name: "TV Movie", id: 878 },
+  { name: "Action", id: 28 },
+  { name: "Adventure", id: 12 },
+  { name: "Animation", id: 16 },
+  { name: "Comedy", id: 35 },
+  { name: "Crime", id: 80 },
+  { name: "Documentary", id: 99 },
+  { name: "Drama", id: 18 },
+  { name: "Family", id: 10751 },
+  { name: "War", id: 10752 },
+];
 
 export default function Menu() {
   return (
@@ -131,41 +77,13 @@ export default function Menu() {
             size={28}
           />
         </View>
-        <View style={[styles.items, styles.itemSelected]}>
-          <Text style={styles.text}>Home</Text>
-        </View>
-        <View style={styles.noItemSelected}>
-          <Text style={styles.text}>Available for Downloads</Text>
-        </View>
-        <View style={styles.noItemSelected}>
-          <Text style={styles.text}>Netflix Originals</Text>
-        </View>
-        <View style={styles.noItemSelected}>
-          <Text style={styles.text}>Tv Show</Text>
-        </View>
-        <View style={styles.noItemSelected}>
-          <Text style={styles.text}>Action & Adventure</Text>
-        </View>
-        <View style={styles.noItemSelected}>
-          <Text style={styles.text}>Children & Family Movies</Text>
-        </View>
-        <View style={styles.noItemSelected}>
-          <Text style={styles.text}>Comedy</Text>
-        </View>
-        <View style={styles.noItemSelected}>
-          <Text style={styles.text}>Documentaries</Text>
-        </View>
-        <View style={styles.noItemSelected}>
-          <Text style={styles.text}>Dramas</Text>
-        </View>
-        <View style={styles.noItemSelected}>
-          <Text style={styles.text}>Independent Movies</Text>
-        </View>
-        <View style={styles.noItemSelected}>
-          <Text style={styles.text}>Indian Movies</Text>
-        </View>
-
-      
+        {genres.map((genre) => (
+            <React.Fragment key={genre.id}>
+              <View style={styles.items}>
+              <Text style={styles.text}>{genre.name}</Text>
+              </View>
+            </React.Fragment>
+          ))}
       </ScrollView>
     </View>
   );

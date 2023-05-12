@@ -1,15 +1,14 @@
-import { StyleSheet, Dimensions } from "react-native"
+import { StyleSheet, Dimensions } from "react-native";
 
-const width = Dimensions.get('window').width
-const height = Dimensions.get('window').height
-import colors from "../../constantes/colors";
+const width = Dimensions.get('window').width;
+const height = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
     menu:{
         flex: 1,
         width: width,
         height: height,
-        backgroundColor: colors.backgroundSecondary,
+        backgroundColor: "#191919",
     },
     avatarContainer: {
         flexDirection: "row",
@@ -32,7 +31,7 @@ const styles = StyleSheet.create({
         
     },
     text: {
-        color: colors.textTerciary,
+        color: "#b3b3b3",
         fontSize: 15,
     },
     textWithIcon:{
@@ -64,6 +63,7 @@ const styles = StyleSheet.create({
     },
     itemSelected: {
        borderLeftWidth: 5,
+       borderColor: "red"
     },
     noItemSelected: {
         paddingVertical: 20,
