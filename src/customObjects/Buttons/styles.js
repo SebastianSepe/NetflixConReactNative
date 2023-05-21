@@ -46,6 +46,17 @@ const styles = StyleSheet.create({
 
     },
 
+    buttonSearch:{
+        alignSelf: 'center',
+        borderRadius: 25,
+        padding: 10,
+        margin: 5,
+        elevation: 3,
+        alignItems: "center",
+        opacity: 0.9
+    },
+
+
 })
 
 export default styles;

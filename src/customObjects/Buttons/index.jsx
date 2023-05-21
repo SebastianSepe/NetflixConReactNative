@@ -1,6 +1,7 @@
 import { Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import styles from "./styles";
+import colors from "../../constantes/colors";
 
 export function SignIn(props) {
 
@@ -154,6 +155,34 @@ export function AddButton(props) {
                 style = {{
                     ...styles.textAddItem,
                     color: 'black',
+                    fontWeight: 'bold',
+                    
+                }}
+            
+            >
+                { text }
+            </Text>
+        </TouchableOpacity>
+    )
+}
+
+export function Search(props) {
+
+    const { onPress, text } = props
+    
+    return (
+        <TouchableOpacity
+            style = {{
+                ...styles.buttonSearch,
+                backgroundColor: "red",
+                width: '40%',
+            }}
+            onPress = { onPress }
+        >
+            <Text
+                style = {{
+                    ...styles.buttonText,
+                    color: '#f1f1f1',
                     fontWeight: 'bold',
                     
                 }}

@@ -1,6 +1,5 @@
 #ApiKey
 .env
-
 node_modules/
 .expo/
 dist/

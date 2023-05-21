@@ -3,9 +3,11 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import CategorysViewScreen from "../screens/CategorysViewScreen";
-import FilmsOrSerieDetailScreen from "../screens/FilmsOrSerieDetailScreen";
+import CatalogueScreen from "../screens/CatalogueScreen";
+import DetailsScreen from "../screens/DetailsScreen";
 import MovieList from "../components/MovieList";
+import VideoPlayerScreen from "../screens/VideoPlayerScreen";
+import SearchInCatalogue from "../components/ApiComponente/SearchInCatalogue";
 
 const FilmsNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -15,13 +17,31 @@ const FilmsNavigator = () => {
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen
           name="Home"
-          component={CategorysViewScreen}
+          component={CatalogueScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen name="MovieList" component={MovieList} />
         <Stack.Screen
           name="Details"
-          component={FilmsOrSerieDetailScreen}
+          component={DetailsScreen}
+          options={{
+            title: null,
+            headerTransparent: true,
+            headerTintColor: "white",
+          }}
+        />
+        <Stack.Screen
+          name="PlayVideo"
+          component={VideoPlayerScreen}
+          options={{
+            title: null,
+            headerTransparent: true,
+            headerTintColor: "white",
+          }}
+        />
+        <Stack.Screen
+          name="SearchInCatalogue"
+          component={SearchInCatalogue}
           options={{
             title: null,
             headerTransparent: true,

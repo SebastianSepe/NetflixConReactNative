@@ -1,19 +1,8 @@
-import {
-  Dimensions,
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-  renderItem,
-} from "react-native";
-import React, { Component } from "react";
-
+import React from "react";
+import { View, Image, Text, FlatList } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import IonIcons from "react-native-vector-icons/Ionicons";
 import styles from "./styles";
-
 
 const genres = [
   { name: "TV Movie", id: 878 },
@@ -28,63 +17,59 @@ const genres = [
   { name: "War", id: 10752 },
 ];
 
-export default function Menu() {
+const Avatar = () => (
+  <View style={styles.avatarContainer}>
+    <View style={styles.avatarImage}>
+      <Image
+        style={styles.avatar}
+        source={require("../../assets/imgs/avatar.png")}
+      />
+      <Text style={styles.text}>Seba Sepe</Text>
+    </View>
+    <Icon name="exchange" color="white" size={25} />
+  </View>
+);
+
+const MenuItem = ({ iconName, text }) => (
+  <View style={styles.textWithIcon}>
+    <View style={styles.withIcon}>
+      {iconName === "FontAwesome" ? (
+        <Icon style={styles.iconWithText} name={iconName} color="white" size={28} />
+      ) : (
+        <IonIcons style={styles.iconWithText} name={iconName} color="white" size={28} />
+      )}
+      <Text style={styles.text}>{text}</Text>
+    </View>
+    <Icon style={styles.rightIcon} name="angle-right" color="white" size={28} />
+  </View>
+);
+
+const GenreItem = ({ item }) => (
+  <View style={styles.items}>
+    <Text style={styles.text}>{item.name}</Text>
+  </View>
+);
+
+const Menu = () => {
+  const renderGenreItem = ({ item }) => <GenreItem item={item} />;
+
   return (
     <View style={styles.menu}>
-      <View style={styles.avatarContainer}>
-        <View style={styles.avatarImage}>
-          <Image
-            style={styles.avatar}
-            source={require("../../assets/imgs/avatar.png")}
-          />
-          <Text style={styles.text}>Seba Sepe</Text>
-        </View>
-        <Icon name="exchange" color="white" size={25} />
-      </View>
-      <ScrollView style={styles.scrollContainer}>
-        <View style={styles.textWithIcon}>
-          <View style={styles.withIcon}>
-            <Icon
-              style={styles.iconWithText}
-              name="download"
-              color="white"
-              size={28}
-            />
-            <Text style={styles.text}>My Downloads</Text>
-          </View>
-          <Icon
-            style={styles.rightIcon}
-            name="angle-right"
-            color="white"
-            size={28}
-          />
-        </View>
-
-        <View style={styles.textWithIcon}>
-          <View style={styles.withIcon}>
-            <IonIcons
-              style={styles.iconWithText}
-              name="md-checkmark"
-              color="white"
-              size={28}
-            />
-            <Text style={styles.text}>My List</Text>
-          </View>
-          <Icon
-            style={styles.rightIcon}
-            name="angle-right"
-            color="white"
-            size={28}
-          />
-        </View>
-        {genres.map((genre) => (
-            <React.Fragment key={genre.id}>
-              <View style={styles.items}>
-              <Text style={styles.text}>{genre.name}</Text>
-              </View>
-            </React.Fragment>
-          ))}
-      </ScrollView>
+      <Avatar />
+      <FlatList
+        style={styles.scrollContainer}
+        data={genres}
+        renderItem={renderGenreItem}
+        keyExtractor={(item) => item.id.toString()}
+        ListHeaderComponent={
+          <>
+            <MenuItem iconName="FontAwesome" text="My Downloads" />
+            <MenuItem iconName="Ionicons" text="My List" />
+          </>
+        }
+      />
     </View>
   );
-}
+};
+
+export default Menu;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import styles from "./styles";
-import MovieList from "../MovieList";
+import MovieList from "../../MovieList";
 
 export default function List() {
   const genres = [

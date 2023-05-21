@@ -11,7 +11,7 @@ import {
 import React, { useState, useEffect } from "react";
 import styles from "./styles";
 import axios from "axios";
-import FilmsOrSerieDetailScreen from "../../screens/FilmsOrSerieDetailScreen";
+import FilmsOrSerieDetailScreen from "../../screens/DetailsScreen";
 
 export default function DataApi() {
   const apiKey = process.env.REACT_APP_API_KEY_MOVIES;
@@ -19,6 +19,21 @@ export default function DataApi() {
   const [searchResults, setSearchResults] = useState(null);
   const [selectedMovie, setSelectedMovie] = useState(null);
 
+  // La función searchMovies utiliza la API de The Movie Database para buscar películas con el término 
+  // de búsqueda especificado. 
+  const searchMovies = async (query) => {
+    try {
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${query}&page=1`
+      );
+
+      return response.data.results;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  // La función getMovieDetails utiliza la API para obtener detalles de una película en particular con
+  //  el id de la película.
   const getMovieDetails = async (movieId) => {
     try {
       const response = await axios.get(
@@ -30,6 +45,9 @@ export default function DataApi() {
       console.error(error);
     }
   };
+
+  // La función MovieDetails renderiza los detalles de la película seleccionada, incluyendo el título,
+  // la fecha de lanzamiento, la descripción y la popularidad.
   const MovieDetails = ({ movieId }) => {
     const [movieDetails, setMovieDetails] = useState(null);
 
@@ -61,30 +79,30 @@ export default function DataApi() {
       </View>
     );
   };
-  const searchMovies = async (query) => {
-    try {
-      const response = await axios.get(
-        `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${query}&page=1`
-      );
 
-      return response.data.results;
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // La función handleSearch se encarga de manejar la búsqueda de películas y actualizar el estado de búsqueda.
   const handleSearch = async () => {
     const response = await axios.get(
       `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${searchQuery}&page=1`
     );
     setSearchResults(response.data.results);
   };
+
+  // La función handleMoviePress se utiliza para manejar el evento de pulsar una película y navegar a una pantalla 
+  // de detalles de película.
   const handleMoviePress = (movie) => {
     setSelectedMovie(movie);
     navigation.navigate("FilmsOrSerieDetailScreen", { movie });
   };
+
+  // La función closeModal se utiliza para cerrar la pantalla de detalles de la película.
   const closeModal = () => {
     setSelectedMovie(null);
   };
+
+
+  // La función renderMovie se encarga de renderizar una película y su información, 
+  // incluyendo el título y la fecha de lanzamiento.
   const renderMovie = ({ item }) => (
     <TouchableOpacity
       onPress={() => handleMoviePress(item)}
@@ -102,6 +120,11 @@ export default function DataApi() {
       </View>
     </TouchableOpacity>
   );
+
+
+  // La función renderPoster renderiza un póster seleccionado y utiliza el useMemo hook de React para 
+  // actualizar el estado solo cuando el póster seleccionado cambia.
+
   function renderPoster({ item }) {
     return (
       <TouchableOpacity onPress={() => handleSelectMovie(item)}>
@@ -114,13 +137,18 @@ export default function DataApi() {
       </TouchableOpacity>
     );
   }
+
+  // La función CloseButton se utiliza para renderizar un botón de cierre en la pantalla de detalles de la película.
+
+  function CloseButton({ onPress }) {
+    return <Button title="Close" onPress={onPress} />;
+  }
+
+  // Se utiliza para construir la URL de la imagen del póster de una película seleccionada en una modal.
   const modalPosterUrl = useMemo(
     () => `https://image.tmdb.org/t/p/w500/${selectedMovie.poster_path}`,
     [selectedMovie]
   );
-  function CloseButton({ onPress }) {
-    return <Button title="Close" onPress={onPress} />;
-  }
 
   return (
     <View style={styles.container}>
@@ -128,7 +156,7 @@ export default function DataApi() {
         <Text style={styles.text}>Search Movies</Text>
         <TextInput
           style={styles.input}
-          placeholder="What do you want to see?"
+          
           value={searchQuery}
           onChangeText={setSearchQuery}
         />

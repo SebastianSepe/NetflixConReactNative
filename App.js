@@ -1,6 +1,6 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { SafeAreaView, StatusBar, StyleSheet, View } from "react-native";
-import CategorysViewScreen from "./src/screens/CategorysViewScreen";
+import CategorysViewScreen from "./src/screens/CatalogueScreen";
 import HomeScreen from "./src/screens/HomeScreen";
 import colors from "./src/constantes/colors";
 
@@ -24,13 +24,9 @@ export default function App() {
     setIsOpen(newIsOpen);
   };
 
-
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "black" }}>
       <StatusBar barStyle={"light-content"} />
-      {/* <View style={{backgroundColor: "white", flex: 1,}}>
-      <DataApi />
-      </View> */}
       {isUser ? (
           <FilmsNavigator />
       ) : (

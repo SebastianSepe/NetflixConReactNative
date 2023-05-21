@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import colors from "../../constantes/colors";
+import colors from "../../../constantes/colors";
 
 const styles = StyleSheet.create({
   listImageContenier: {
