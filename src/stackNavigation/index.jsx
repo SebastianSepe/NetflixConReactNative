@@ -9,11 +9,10 @@ import MovieList from "../components/MovieList";
 import VideoPlayerScreen from "../screens/VideoPlayerScreen";
 import SearchInCatalogue from "../components/ApiComponente/SearchInCatalogue";
 
-const FilmsNavigator = () => {
+const StackNavigator = () => {
   const Stack = createNativeStackNavigator();
 
   return (
-    <NavigationContainer style={styles.container}>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen
           name="Home"
@@ -49,11 +48,10 @@ const FilmsNavigator = () => {
           }}
         />
       </Stack.Navigator>
-    </NavigationContainer>
   );
 };
 
-export default FilmsNavigator;
+export default StackNavigator;
 
 const styles = StyleSheet.create({
   // container: {
