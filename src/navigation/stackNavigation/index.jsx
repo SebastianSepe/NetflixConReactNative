@@ -1,17 +1,16 @@
-import React from "react";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
 import CatalogueScreen from "../../screens/CatalogueScreen";
 import DetailsScreen from "../../screens/DetailsScreen";
-import MovieList from "../../components/MovieList";
-import VideoPlayerScreen from "../../screens/VideoPlayerScreen";
-import SearchInCatalogue from "../../components/ApiComponente/SearchInCatalogue";
 import DrawerNavigator from "../drawerNavigation";
+import MovieList from "../../components/MovieList";
+import React from "react";
+import SearchInCatalogue from "../../components/ApiComponente/SearchInCatalogue";
+import VideoPlayerScreen from "../../screens/VideoPlayerScreen";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 
 const Stack = createNativeStackNavigator();
 
 const StackNavigator = () => {
- 
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -19,6 +18,7 @@ const StackNavigator = () => {
         component={DrawerNavigator}
         options={{ headerShown: false }}
       />
+
       <Stack.Screen
         name="Details"
         component={DetailsScreen}
@@ -37,8 +37,8 @@ const StackNavigator = () => {
           headerTintColor: "white",
         }}
       />
-      {/* <Stack.Screen name="MovieList" component={MovieList} /> */}
-      {/* <Stack.Screen
+      <Stack.Screen name="MovieList" component={MovieList} />
+      <Stack.Screen
           name="SearchInCatalogue"
           component={SearchInCatalogue}
           options={{
@@ -46,7 +46,7 @@ const StackNavigator = () => {
             headerTransparent: true,
             headerTintColor: "white",
           }}
-        /> */}
+        />
     </Stack.Navigator>
   );
 };

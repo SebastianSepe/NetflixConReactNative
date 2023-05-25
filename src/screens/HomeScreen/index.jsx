@@ -1,19 +1,22 @@
 import {
   Button,
+  Dimensions,
   Image,
   ImageBackground,
   Text,
   TextInput,
   View,
-  Dimensions,
 } from "react-native";
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
+
 import { SignIn } from "../../customObjects/Buttons";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import react from "react";
+import styles from "./styels";
 
+const Stack = createNativeStackNavigator();
 
-
-function HomeScreen({onUserLogin}) {
-  
+function HomeScreen({ onUserLogin }) {
   return (
     <View style={styles.home}>
       <View style={styles.homeContainer}>
@@ -23,7 +26,10 @@ function HomeScreen({onUserLogin}) {
           style={styles.homeImageBackground}
         >
           <View style={styles.homeTitleAndPlaceholder}>
-          <Image style={styles.logo} source={require("../../assets/imgs/logo.png")} />
+            <Image
+              style={styles.logo}
+              source={require("../../assets/imgs/logo.png")}
+            />
             <TextInput
               placeholder="Email"
               placeholderTextColor={"#f1f1f1"}
@@ -42,7 +48,7 @@ function HomeScreen({onUserLogin}) {
               <Text style={styles.homeSignUpQuestion}>
                 Don't have an account?
               </Text>
-              <Button title="Sign UP"/>
+              <Button title="Sign UP" />
             </View>
           </View>
         </ImageBackground>
@@ -52,6 +58,3 @@ function HomeScreen({onUserLogin}) {
 }
 
 export default HomeScreen;
-
-import styles from "./styels";import react from "react";
-

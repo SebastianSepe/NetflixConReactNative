@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Image, Text, FlatList } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
-import IonIcons from "react-native-vector-icons/Ionicons";
+import { FontAwesome } from '@expo/vector-icons'; 
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import styles from "./styles";
 
 const genres = [
@@ -17,6 +17,9 @@ const genres = [
   { name: "War", id: 10752 },
 ];
 
+const size = 24
+const color = "white"
+
 const Avatar = () => (
   <View style={styles.avatarContainer}>
     <View style={styles.avatarImage}>
@@ -26,21 +29,21 @@ const Avatar = () => (
       />
       <Text style={styles.text}>Seba Sepe</Text>
     </View>
-    <Icon name="exchange" color="white" size={25} />
+    <FontAwesome name="exchange" size={size} color={color} />
   </View>
 );
 
 const MenuItem = ({ iconName, text }) => (
   <View style={styles.textWithIcon}>
     <View style={styles.withIcon}>
-      {iconName === "FontAwesome" ? (
-        <Icon style={styles.iconWithText} name={iconName} color="white" size={28} />
+      {iconName === "download" ? (
+        <MaterialCommunityIcons name="download" size={size} color={color} />
       ) : (
-        <IonIcons style={styles.iconWithText} name={iconName} color="white" size={28} />
+        <MaterialCommunityIcons name="format-list-bulleted" size={size} color={color} />
       )}
-      <Text style={styles.text}>{text}</Text>
+      <Text style={styles.textIcons}>{text}</Text>
     </View>
-    <Icon style={styles.rightIcon} name="angle-right" color="white" size={28} />
+    <FontAwesome style={styles.rightIcon} name="angle-right" color={color} size={size} />
   </View>
 );
 
@@ -63,7 +66,7 @@ const Menu = (navigation) => {
         keyExtractor={(item) => item.id.toString()}
         ListHeaderComponent={
           <>
-            <MenuItem iconName="FontAwesome" text="My Downloads" />
+            <MenuItem iconName="download" text="My Downloads" />
             <MenuItem iconName="Ionicons" text="My List" />
           </>
         }

@@ -1,24 +1,21 @@
 import React, { useState } from "react";
-import { SafeAreaView, StatusBar, StyleSheet, View, Text } from "react-native";
+import { SafeAreaView, StatusBar, StyleSheet, Text, View } from "react-native";
+
 import HomeScreen from "./src/screens/HomeScreen";
-import colors from "./src/constantes/colors";
-
-
-import StackNavigator from "./src/navigation/stackNavigation";
 import { NavigationContainer } from "@react-navigation/native";
-import DrawerNavigator from "./src/navigation/drawerNavigation";
-
+import StackNavigator from "./src/navigation/stackNavigation";
+import colors from "./src/constantes/colors";
 
 export default function App() {
   const [isUser, setIsUser] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  
 
   const handleLogIn = () => {
     setIsUser(true);
   };
 
-  const updateMenu = (newIsOpen) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const updateMenu = newIsOpen => {
     setIsOpen(newIsOpen);
   };
 

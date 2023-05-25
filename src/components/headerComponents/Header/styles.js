@@ -3,9 +3,9 @@ import colors from "../../../constantes/colors";
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
-    height: 60,
     width: "100%",
+    height: 60,
+    flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     backgroundColor: colors.backgroundPrimary,
@@ -19,5 +19,4 @@ const styles = StyleSheet.create({
 
   });
   
-
 export default styles;

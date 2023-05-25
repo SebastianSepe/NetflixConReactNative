@@ -30,6 +30,11 @@ const styles = StyleSheet.create({
         alignItems: "center",
         
     },
+    textIcons:{
+        color: "#b3b3b3",
+        fontSize: 15,
+        marginLeft: 10,
+    },
     text: {
         color: "#b3b3b3",
         fontSize: 15,
@@ -45,6 +50,8 @@ const styles = StyleSheet.create({
     withIcon:{
         flexDirection: "row",
         alignItems: "stretch",
+        paddingHorizontal: 15, 
+        marginRight: 10,
     },
     scrollContainer: {
         width: width / 2 + 59
