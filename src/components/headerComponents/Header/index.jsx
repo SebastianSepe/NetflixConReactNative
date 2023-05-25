@@ -1,9 +1,11 @@
 import React from "react";
-import { Image, TouchableOpacity, SafeAreaView } from "react-native";
+import { Image, TouchableOpacity, SafeAreaView, TouchableNativeFeedback, View, Text } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { useNavigation, DrawerActions } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 
 import styles from "./styles";
+
+import Menu from "../../Menu";
 
 const Header = () => {
   const navigation = useNavigation();
@@ -13,16 +15,14 @@ const Header = () => {
   };
 
   const handleMenuPress = () => {
-    navigation.dispatch(DrawerActions.toggleDrawer());
+    navigation.dispatch(DrawerActions.openDrawer());
   };
-
-  const handleMenu = () =>{ navigation.openDrawer() }
 
   return (
     <SafeAreaView style={styles.container}>
-      <TouchableOpacity onPress={handleMenuPress}>
+      <TouchableNativeFeedback onPress={handleMenuPress}>
         <Icon name="bars" color="white" size={25} />
-      </TouchableOpacity>
+      </TouchableNativeFeedback>
       <Image
         style={styles.logo}
         source={require("../../../assets/imgs/logo.png")}
