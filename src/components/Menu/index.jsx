@@ -53,7 +53,7 @@ const GenreItem = ({ item }) => (
   </View>
 );
 
-const Menu = (navigation) => {
+const Menu = ({ navigation }) => { // Modificar la función para recibir `props`
   const renderGenreItem = ({ item }) => <GenreItem item={item} />;
 
   return (

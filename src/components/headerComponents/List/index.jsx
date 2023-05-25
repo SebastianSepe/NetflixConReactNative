@@ -25,9 +25,6 @@ export default function List() {
 
   return (
     <View style={styles.listContainer}>
-      {showContent && (
-        <Text style={styles.content}>Aquí va el contenido que deseas mostrar</Text>
-      )}
       <ScrollView>
         <View>
         <TouchableOpacity onPress={handlePress}></TouchableOpacity>

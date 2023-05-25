@@ -11,7 +11,7 @@ import {
 import React, { useState, useEffect } from "react";
 import styles from "./styles";
 import axios from "axios";
-import FilmsOrSerieDetailScreen from "../../screens/DetailsScreen";
+import FilmsOrSerieDetailScreen from "../../../screens/DetailsScreen";
 
 export default function DataApi() {
   const apiKey = process.env.REACT_APP_API_KEY_MOVIES;

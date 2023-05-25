@@ -5,16 +5,6 @@ import styles from "./styles";
 
 const { width } = Dimensions.get("window");
 
-const Slider = ({ image }) => (
-  <View style={styles.slide}>
-    <Image style={styles.image} source={image.uri} />
-    <View style={styles.overlay} />
-    <View style={styles.titleContainer}>
-      <Text style={styles.title}>{image.title}</Text>
-      <Text style={styles.description}>{image.description}</Text>
-    </View>
-  </View>
-);
 const Carousel = () => {
   const imagesSlider = [
     {
@@ -51,5 +41,18 @@ const Carousel = () => {
     </View>
   );
 };
+
+const Slider = ({ image }) => (
+  <View style={styles.slide}>
+    <Image style={styles.image} source={image.uri} />
+    <View style={styles.overlay} />
+    <View style={styles.titleContainer}>
+      <Text style={styles.title}>{image.title}</Text>
+      <Text style={styles.description}>{image.description}</Text>
+    </View>
+  </View>
+);
+
+
 
 export default Carousel;
