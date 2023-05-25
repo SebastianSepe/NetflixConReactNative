@@ -50,7 +50,7 @@ const GenreItem = ({ item }) => (
   </View>
 );
 
-const Menu = () => {
+const Menu = (navigation) => {
   const renderGenreItem = ({ item }) => <GenreItem item={item} />;
 
   return (
