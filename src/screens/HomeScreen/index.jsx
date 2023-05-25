@@ -9,13 +9,11 @@ import {
 } from "react-native";
 import React, {useEffect} from "react";
 import { SignIn } from "../../customObjects/Buttons";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 
 
 function HomeScreen({onUserLogin}) {
   
-  const Stack = createNativeStackNavigator();
   return (
     <View style={styles.home}>
       <View style={styles.homeContainer}>

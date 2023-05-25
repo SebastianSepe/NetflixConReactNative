@@ -1,10 +1,9 @@
 import React from 'react';
-import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import CatalogueScreen from '../../screens/CatalogueScreen';
 import Menu from '../../components/Menu';
 
 const Drawer = createDrawerNavigator();
-
 
 const DrawerNavigator = () => {
   return (

@@ -6,17 +6,17 @@ import colors from "./src/constantes/colors";
 
 import StackNavigator from "./src/navigation/stackNavigation";
 import { NavigationContainer } from "@react-navigation/native";
+import DrawerNavigator from "./src/navigation/drawerNavigation";
 
 
 export default function App() {
   const [isUser, setIsUser] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   
 
   const handleLogIn = () => {
     setIsUser(true);
   };
-
-  const [isOpen, setIsOpen] = useState(false);
 
   const updateMenu = (newIsOpen) => {
     setIsOpen(newIsOpen);

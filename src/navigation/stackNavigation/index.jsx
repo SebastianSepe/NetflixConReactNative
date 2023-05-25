@@ -8,17 +8,17 @@ import VideoPlayerScreen from "../../screens/VideoPlayerScreen";
 import SearchInCatalogue from "../../components/ApiComponente/SearchInCatalogue";
 import DrawerNavigator from "../drawerNavigation";
 
-const StackNavigator = () => {
-  const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator();
 
+const StackNavigator = () => {
+ 
   return (
-    <Stack.Navigator initialRouteName="Home">
+    <Stack.Navigator>
       <Stack.Screen
         name="Drawer"
         component={DrawerNavigator}
         options={{ headerShown: false }}
       />
-
       <Stack.Screen
         name="Details"
         component={DetailsScreen}
