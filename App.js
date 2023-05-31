@@ -1,31 +1,46 @@
 import React, { useState } from "react";
-import { SafeAreaView, StatusBar, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView, StatusBar, StyleSheet } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { Provider } from "react-redux";
 
 import HomeScreen from "./src/screens/HomeScreen";
-import { NavigationContainer } from "@react-navigation/native";
 import StackNavigator from "./src/navigation/stackNavigation";
 import colors from "./src/constantes/colors";
 
+import { createStore, combineReducers } from "redux";
+import movieListReducer from "./src/store/reducers/movieList.reducer";
+
+const rootReducer = combineReducers({
+  movies: movieListReducer,
+});
+
+const store = createStore(rootReducer);
+
 export default function App() {
   const [isUser, setIsUser] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleLogIn = () => {
     setIsUser(true);
   };
 
-  const [isOpen, setIsOpen] = useState(false);
-
-  const updateMenu = newIsOpen => {
+  const updateMenu = (newIsOpen) => {
     setIsOpen(newIsOpen);
   };
 
   return (
-    <NavigationContainer>
-      <SafeAreaView style={{ flex: 1, backgroundColor: "black" }}>
-        <StatusBar barStyle={"light-content"} />
-        {isUser ? <StackNavigator /> : <HomeScreen onUserLogin={handleLogIn} />}
-      </SafeAreaView>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <SafeAreaView style={{ flex: 1, backgroundColor: "black" }}>
+          <StatusBar barStyle={"light-content"} />
+          {isUser ? (
+            <StackNavigator />
+          ) : (
+            <HomeScreen onUserLogin={handleLogIn} />
+          )}
+        </SafeAreaView>
+      </NavigationContainer>
+    </Provider>
   );
 }
 

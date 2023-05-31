@@ -5,30 +5,31 @@ import styles from "./styles";
 
 const { width } = Dimensions.get("window");
 
-const Carousel = () => {
-  const imagesSlider = [
-    {
-      uri: require("../../assets/imgs/eljuegodelcalamar.jpg"),
-      title: "El Juego del Calamar",
-      description: "Una serie de televisión surcoreana de 2021",
-    },
-    {
-      uri: require("../../assets/imgs/minions.jpg"),
-      title: "Minions",
-      description: "Una película de animación estadounidense de 2015",
-    },
-    {
-      uri: require("../../assets/imgs/tarzan.jpg"),
-      title: "Tarzan",
-      description: "Una película de aventuras de Disney de 1999",
-    },
-  ];
+const imagesSlider = [
+  {
+    uri: require("../../assets/imgs/eljuegodelcalamar.jpg"),
+    title: "El Juego del Calamar",
+    description: "Una serie de televisión surcoreana de 2021",
+  },
+  {
+    uri: require("../../assets/imgs/minions.jpg"),
+    title: "Minions",
+    description: "Una película de animación estadounidense de 2015",
+  },
+  {
+    uri: require("../../assets/imgs/tarzan.jpg"),
+    title: "Tarzan",
+    description: "Una película de aventuras de Disney de 1999",
+  },
+];
 
+const Carousel = () => {
   return (
     <View style={styles.container}>
       <Swiper
         autoplay
         height={180}
+        width={width}
         showsPagination
         dotStyle={styles.dotStyle}
         activeDotStyle={styles.activeDotStyle}
@@ -52,7 +53,5 @@ const Slider = ({ image }) => (
     </View>
   </View>
 );
-
-
 
 export default Carousel;

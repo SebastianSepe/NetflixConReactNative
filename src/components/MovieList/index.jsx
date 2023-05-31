@@ -1,25 +1,16 @@
 import React, { useState, useEffect } from "react";
-import {
-  View,
-  FlatList,
-  Image,
-  StyleSheet,
-  TouchableOpacity,
-  Text,
-  Modal,
-} from "react-native";
-import PropTypes from "prop-types";
+import { View, FlatList, Image, TouchableOpacity, Text } from "react-native";
 import styles from "./styles";
 import { useNavigation } from "@react-navigation/native";
+import { connect } from 'react-redux';
+import { setMovies } from '../../store/actions/movieList.action';
+import { combineReducers } from 'redux';
+import movieListReducer from '../../store/reducers/movieList.reducer';
 
-const MovieList = ({ genreId, genreName }) => {
+const MovieList = ({ genreId, genreName, movies, setMovies }) => {
   const API_KEY = "b3fc34fe78bbcab82af9557961220767";
-  //const API_KEY  =  process.env.REACT_APP_API_KEY_MOVIES
   const TMDB_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`;
 
-
-  
-  const [movies, setMovies] = useState([]);
   const navigation = useNavigation();
 
   useEffect(() => {
@@ -27,7 +18,7 @@ const MovieList = ({ genreId, genreName }) => {
       .then((response) => response.json())
       .then((data) => setMovies(data.results))
       .catch((error) => console.error(error));
-  }, [genreId]);
+  }, [genreId, setMovies]);
 
   const renderMovie = ({ item }) => (
     <View>
@@ -57,4 +48,13 @@ const MovieList = ({ genreId, genreName }) => {
   );
 };
 
-export default MovieList;
+const rootReducer = combineReducers({
+  movies: movieListReducer,
+});
+
+export default connect(
+  (state) => ({
+    movies: state.movies.movies,
+  }),
+  { setMovies }
+)(MovieList);
